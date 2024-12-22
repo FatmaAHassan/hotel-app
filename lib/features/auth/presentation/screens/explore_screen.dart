@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:hotel/core/utils/app_assets.dart';
 import 'package:hotel/core/utils/app_colors.dart';
 import 'package:hotel/features/tabs/explore.dart';
 import 'package:hotel/features/tabs/favorite.dart';
@@ -78,7 +79,7 @@ class _ExploreScreenState extends State<ExploreScreen> {
                                 ),
                               ),
                               // Vertical Space Between Text Lines
-                              const SizedBox(height:1),
+                              const SizedBox(height: 1),
                               // Second Line of Text
                               Text(
                                 "أي مكان. أي أسبوع. إضافة الضيوف",
@@ -115,29 +116,27 @@ class _ExploreScreenState extends State<ExploreScreen> {
                 children: [
                   TextButton.icon(
                     onPressed: () {
-                      // Map view logic
+                      // Map logic
                     },
-                    icon: const ImageIcon(AssetImage('assets/images/mapIcon.png'),
-                        color: AppColors.black,),
-                    label: const Text('الخريطة',
+                    icon: const ImageIcon(
+                      AssetImage('assets/images/mapIcon.png'),
+                      color: AppColors.black,
+                    ),
+                    label: const Text(
+                      'الخريطة',
                       style: TextStyle(color: AppColors.black), // Black text
                     ),
                   ),
-
                   TextButton(
-                    onPressed: () {
-                      // Filter by rating
-                    },
+                    onPressed: () {},
                     child: const Text('تصفية',
-                    style: TextStyle(color: AppColors.black)),
+                        style: TextStyle(color: AppColors.black)),
                   ),
-
                   TextButton.icon(
                     onPressed: () {
-
-                      // Sort by price
-                    },
-                    icon: Icon(Icons.arrow_downward_sharp, color: AppColors.black),
+                      // Sort by pric
+      },
+                    icon: Icon(Icons.arrow_upward_sharp, color: AppColors.black),
                     label: const Text('ترتيب',
                       style: TextStyle(color: AppColors.black), // Black text
                     ),
@@ -215,74 +214,127 @@ class HotelCard extends StatelessWidget {
       ),
       child: Padding(
         padding: const EdgeInsets.all(8.0),
-        child: Row(
-          crossAxisAlignment: CrossAxisAlignment.end,
-          children: [
-           // Image
-            Container(
-              width: 110,
-              height: 173,
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(5.0),
-                image: const DecorationImage(
-                  image: AssetImage('assets/images/unsplash.png'),
-                  // Example image
-                  fit: BoxFit.fill,
+        child: Directionality(
+          textDirection: TextDirection.ltr,
+          child: Row(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              // Image
+              Container(
+                width: 110,
+                height: 173,
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(5.0),
+                  image: const DecorationImage(
+                    image: AssetImage('assets/images/unsplash.png'),
+                    fit: BoxFit.fill,
+                  ),
                 ),
               ),
-            ),
-            const SizedBox(width: 5.0),
-            // Hotel Info
-            Expanded(
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-
-                children: [
-                  const ImageIcon(AssetImage('assets/images/heart.png')),
-                  const Text(
-                    'Palm Inn Suites Hotel',
-                    style: TextStyle(
-                      fontWeight: FontWeight.bold,
-                      fontSize: 14.0,
+              const SizedBox(width: 5.0),
+              // Hotel Info
+              Expanded(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.end,
+                  children: [
+                    Row(
+                      children: [
+                        const ImageIcon(
+                          AssetImage('assets/images/heart.png'),
+                        ),
+                        SizedBox(
+                          width: 20,
+                        ),
+                        const Text(
+                          'Palm Inn Suites Hotel',
+                          style: TextStyle(
+                            fontWeight: FontWeight.bold,
+                            fontSize: 14.0,
+                          ),
+                        ),
+                      ],
                     ),
-                  ),
-                  const SizedBox(height: 4.0),
-                  Row(
-                    children: const [
-                      Icon(Icons.star, color:AppColors.black, size: 14),
-                      Text('4.7[478)'),
-                    ],
-                  ),
-                  const SizedBox(height: 3.0),
-                  const Text(
-                    'غرفة مطلة على البحر، 100 متر من وسط المدينة',
-                    style: TextStyle(fontSize: 11.0),
-                  ),
-                  const SizedBox(height: 3.0),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      const Text(
-                        '1,200 LE / الليلة',
-                        style: TextStyle(
-                          fontWeight: FontWeight.bold,
+                    const SizedBox(height: 4.0),
+                    Row(
+                      children: const [
+                        Text('4.7[478)'),
+                        Icon(Icons.star, color: AppColors.black, size: 14),
+                      ],
+                    ),
+                    Row(
+                      children: const [
+                        Text("مقابلة الشاطئ"),
+                        ImageIcon(
+                          AssetImage('assets/images/sun-bed.png'),
+                          color: AppColors.black,
+                          size: 10,
+                        ),
+                      ],
+                    ),
+                    const SizedBox(height: 2.0),
+                    Row(
+                      children: const [
+                        Text("غرفة مطلة على البحر، 100 متر من وسط المدينه ",style: TextStyle(fontSize: 10),),
+                        Icon(Icons.location_on_outlined,
                           color: AppColors.black,
                         ),
-                      ),
-
-                      // IconButton(
-                      //   icon: const ImageIcon(
-                      //     AssetImage('assets/images/heart.png'),),
-                      //   onPressed: () {
-                      //     // Handle favorite toggle
-                      //   },
-                      // ),
-                    ],
-                  ),
-                ],
+                      ],
+                    ),
+                    const SizedBox(height: 3.0),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        const Text(
+                          ' السعر لليلة الواحده, شخصين بالغين',
+                          style: TextStyle(
+                            fontWeight: FontWeight.bold,
+                            color: AppColors.black,
+                          ),
+                        ),
+                      ],
+                    ),
+                    SizedBox(height: 2.0,),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        const Text(
+                          '1,200 LE',
+                          style: TextStyle(
+                            fontWeight: FontWeight.bold,
+                            color: AppColors.black,
+                          ),
+                        ),
+                      ],
+                    ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        const Text(
+                    'الغاء مجاني',
+                          style: TextStyle(
+                            color: AppColors.gray,
+                            fontSize: 11
+                          ),
+                        ),
+                      ],
+                    ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        const Text(
+                          'لا يطلب دفع مقدم ',
+                          style: TextStyle(
+                              color: AppColors.gray,
+                              fontSize: 11
+                          ),
+                        ),
+                      ],
+                    ),
+                  ],
+                ),
               ),
-            ),
-          ],
+            ],
+          ),
         ),
       ),
     );
