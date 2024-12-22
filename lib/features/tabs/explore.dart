@@ -1,15 +1,18 @@
 import 'package:flutter/material.dart';
+import 'package:hotel/core/utils/app_colors.dart';
 
-class ExploreTab extends StatefulWidget {
+class ExploreTab extends StatelessWidget {
+  static const String routeName = "exploretab";
   const ExploreTab({super.key});
 
   @override
-  State<ExploreTab> createState() => _ExploreTabState();
-}
-
-class _ExploreTabState extends State<ExploreTab> {
-  @override
   Widget build(BuildContext context) {
-    return const Placeholder();
+    return Scaffold(
+      // backgroundColor: AppColors.background,
+      // appBar: AppBar(
+      //   backgroundColor: AppColors.lightGray,
+      //   toolbarHeight: 62,
+      // ),
+    ) ;
   }
 }
