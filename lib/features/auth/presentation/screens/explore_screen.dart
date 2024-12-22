@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/material.dart' as mat;
 import 'package:hotel/core/utils/app_assets.dart';
 import 'package:hotel/core/utils/app_colors.dart';
 import 'package:hotel/features/tabs/explore.dart';
@@ -118,28 +119,35 @@ class _ExploreScreenState extends State<ExploreScreen> {
                     onPressed: () {
                       // Map logic
                     },
-                    icon: const ImageIcon(
-                      AssetImage('assets/images/mapIcon.png'),
-                      color: AppColors.black,
+                    icon: Row(
+                      children: [
+                        Text(
+                          'الخريطة',
+                          style: TextStyle(color: AppColors.black), // Black text
+                        ),
+                        const ImageIcon(
+                          AssetImage('assets/images/mapIcon.png'),
+                          color: AppColors.black,
+                        ),
+
+                      ],
                     ),
                     label: const Text(
-                      'الخريطة',
+                      '',
                       style: TextStyle(color: AppColors.black), // Black text
                     ),
                   ),
+
                   TextButton(
                     onPressed: () {},
                     child: const Text('تصفية',
                         style: TextStyle(color: AppColors.black)),
                   ),
-                  TextButton.icon(
-                    onPressed: () {
-                      // Sort by pric
-      },
-                    icon: Icon(Icons.arrow_upward_sharp, color: AppColors.black),
-                    label: const Text('ترتيب',
-                      style: TextStyle(color: AppColors.black), // Black text
-                    ),
+                  const Row(
+                    children: [
+                      Text("ترتيب"),
+                      Icon(Icons.compare_arrows),
+                    ],
                   ),
                 ],
               ),
@@ -215,7 +223,7 @@ class HotelCard extends StatelessWidget {
       child: Padding(
         padding: const EdgeInsets.all(8.0),
         child: Directionality(
-          textDirection: TextDirection.ltr,
+          textDirection: mat.TextDirection.rtl,
           child: Row(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
@@ -231,7 +239,7 @@ class HotelCard extends StatelessWidget {
                   ),
                 ),
               ),
-              const SizedBox(width: 5.0),
+              const SizedBox(width: 8.0),
               // Hotel Info
               Expanded(
                 child: Column(
@@ -239,12 +247,6 @@ class HotelCard extends StatelessWidget {
                   children: [
                     Row(
                       children: [
-                        const ImageIcon(
-                          AssetImage('assets/images/heart.png'),
-                        ),
-                        SizedBox(
-                          width: 20,
-                        ),
                         const Text(
                           'Palm Inn Suites Hotel',
                           style: TextStyle(
@@ -252,81 +254,106 @@ class HotelCard extends StatelessWidget {
                             fontSize: 14.0,
                           ),
                         ),
-                      ],
-                    ),
-                    const SizedBox(height: 4.0),
-                    Row(
-                      children: const [
-                        Text('4.7[478)'),
-                        Icon(Icons.star, color: AppColors.black, size: 14),
-                      ],
-                    ),
-                    Row(
-                      children: const [
-                        Text("مقابلة الشاطئ"),
-                        ImageIcon(
-                          AssetImage('assets/images/sun-bed.png'),
-                          color: AppColors.black,
-                          size: 10,
+                        SizedBox(
+                          width: 50.0,
                         ),
+                        const ImageIcon(
+                          AssetImage('assets/images/heart.png'),
+                        )
+                      ],
+                    ),
+                    const SizedBox(height: 3.0),
+                    Row(
+                      children: const [
+                        Icon(Icons.star, color: AppColors.black, size: 14),
+                        Text('7.8[474',
+                            style: TextStyle(fontWeight: FontWeight.bold)),
                       ],
                     ),
                     const SizedBox(height: 2.0),
                     Row(
                       children: const [
-                        Text("غرفة مطلة على البحر، 100 متر من وسط المدينه ",style: TextStyle(fontSize: 10),),
-                        Icon(Icons.location_on_outlined,
+                        Icon(
+                          Icons.location_on_outlined,
                           color: AppColors.black,
+                          size: 15.0,
+                        ),
+                        Text(
+                          "غرفة مطلة على البحر، 100 متر من وسط المدينه ",
+                          style: TextStyle(fontSize: 10),
                         ),
                       ],
                     ),
-                    const SizedBox(height: 3.0),
+                    Row(
+                      children: const [
+                        ImageIcon(
+                          AssetImage('assets/images/sun-bed.png'),
+                          color: AppColors.black,
+                          size: 15.0,
+                        ),
+                        Text("مقابلة الشاطئ", style: TextStyle(fontSize: 12.0)),
+                      ],
+                    ),
+                    const SizedBox(height: 2.0),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        const Text(
+                          'غرفه فندقية : الاسرة :واحد مزدوج او اتنين منفردين ',
+                          style: TextStyle(
+                            fontSize: 10,
+                            color: AppColors.black,
+                          ),
+                        ),
+                      ],
+                    ),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         const Text(
                           ' السعر لليلة الواحده, شخصين بالغين',
                           style: TextStyle(
-                            fontWeight: FontWeight.bold,
+                              fontWeight: FontWeight.bold,
+                              color: AppColors.black,
+                              fontSize: 12.0),
+                        ),
+                      ],
+                    ),
+                    SizedBox(
+                      height: 1.0,
+                    ),
+                    Row(
+                      children: [
+                        Text(
+                          'LE',
+                          style: TextStyle(
+                            fontWeight: FontWeight.w500,
+                            color: AppColors.black,
+                          ),
+                        ),
+                        const Text(
+                          ' 1,200',
+                          style: TextStyle(
+                            fontWeight: FontWeight.w500,
                             color: AppColors.black,
                           ),
                         ),
                       ],
                     ),
-                    SizedBox(height: 2.0,),
                     Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         const Text(
-                          '1,200 LE',
-                          style: TextStyle(
-                            fontWeight: FontWeight.bold,
-                            color: AppColors.black,
-                          ),
+                          'الغاء مجاني',
+                          style: TextStyle(color: AppColors.black, fontSize: 11.0),
                         ),
                       ],
                     ),
+                    SizedBox(height: 1.0,),
                     Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        const Text(
-                    'الغاء مجاني',
-                          style: TextStyle(
-                            color: AppColors.gray,
-                            fontSize: 11
-                          ),
-                        ),
-                      ],
-                    ),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         const Text(
                           'لا يطلب دفع مقدم ',
-                          style: TextStyle(
-                              color: AppColors.gray,
-                              fontSize: 11
-                          ),
+                          style: TextStyle(color: AppColors.black, fontSize: 11.0),
                         ),
                       ],
                     ),
